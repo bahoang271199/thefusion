@@ -1,0 +1,305 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>The Funsion Tool</title>
+  <link rel="stylesheet" type="text/css" href="./tool.component.html">
+
+  <style>
+    img {
+      width: 250px;
+      height: 250px;
+    }
+        body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eee;
+      color: #767676;
+    }
+    .output-container {
+      min-width: 330px;
+      padding-bottom: 35px !important;
+    }
+    .input-container {
+      min-width: 350px;
+      padding-bottom: 35px !important;
+    }
+    #input-img {
+      width: 250;
+      height: 250;
+    }
+    .center-container {
+      display: flex;
+      justify-content: center;
+    }
+    .style-container {
+      display: flex;
+      justify-content: space-around;
+      min-width: 250px;
+      margin-top: 20px;
+    }
+    .container {
+      position: relative;
+    }
+    .image {
+      margin: 5px 0;
+      width: 70px;
+      height: 70px;
+      cursor: pointer;
+    }
+    .imageAnchor:focus img{
+      border: 4px solid rgb(43, 144, 226);
+    }
+
+    .text {
+      background-color: #333;
+      color: white;
+      font-size: 12px;
+      padding: 16px 22px;
+    }
+    .body-container {
+      margin: 20px;
+    }
+    .white-box {
+      background: white;
+      padding: 15px;
+      border-radius: 7px;
+      margin: 20px;
+    }
+
+    .center-text {
+      text-align: center;
+    }
+
+    /* Responsiveness */
+    * {
+      box-sizing: border-box;
+    }
+    .row::after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+    [class*="col-"] {
+      float: left;
+    }
+    /* For desktop: */
+    .col-3 {width: 30%;}
+    /* .col-10 {width: 100%;} */
+
+    @media only screen and (max-width: 1024px) {
+      /* For mobile phones: */
+      [class*="col-"] {
+          width: 100%;
+      }
+    }
+
+    #bookmarkflag {    
+      font-family: Roboto,"Helvetica Neue",sans-serif;
+      position: absolute;
+      right: -264px;
+      width: 500px;
+      top: -133px;
+      font-size: 12px;
+      background: rgb(43, 144, 226);
+      padding: 200px 0 9px;
+      color: #fff;
+      font-weight:bold;
+      text-decoration:none;
+      text-align: center;
+      vertical-align: bottom;
+      box-shadow: 0 0 11px 0 rgba(0,0,0,.75);
+      font-transform: capitalize;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    #bookmarkflag:hover {
+      text-decoration:underline;
+    }
+    #bookmarkflag .bookmarklink {
+      line-height: 15px;
+      font-weight: 900;
+    }
+    .credits {
+      margin: 40px 0;
+      text-align: center;
+    }
+    a {
+      color: rgb(43, 144, 226);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .link {
+      color: rgb(43, 144, 226);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .link:hover {
+      text-decoration: underline;
+    }
+    input[type="file"] {
+      position: absolute;
+      display: none;
+    }
+    .start-btn {
+      color: rgb(43, 144, 226);
+      border: solid 2px rgb(43, 144, 226);
+      width: 88%;
+      font-size: 18px;
+      padding: 9px 0;
+      cursor: pointer;
+      background: white;
+    }
+    .start-btn:hover {
+      background: rgb(43, 144, 226);
+      color: white;
+    }
+    #output-img-container {
+      display: flex;
+      justify-content: center;
+    }
+    .reverse-img {
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
+    .note {
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<script src="sketch.js"></script>
+
+<body>
+  <div class="body-container row">
+  <h1 class="center-text">The Fusion Tool</h1>
+  
+  <div class="input-container white-box col-3">
+    <h3 class="title">INPUT</h3>
+    <div class="center-container">
+      <img id="input-img" src='../../assets/vooc7.jpg'/>
+      <div id="input-source" class="reverse-img"></div>
+    </div>
+
+    <div class="style-container">
+      <div class="container">
+        <a class="imageAnchor" href="#" autofocus>
+          <img class="image" id="girlwithpearl" src='../../assets/vooc7.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="starrynight" src='../../assets/vooc5.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="sunflower" src='../../assets/vooc6.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+    </div>
+    <div class="style-container">
+      <div class="container">
+        <a class="imageAnchor" href="#" autofocus>
+          <img class="image" id="monalisa" src='../../assets/vooc8.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="sunday" src='../../assets/vooc9.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="monet" src='../../assets/vooc10.jpg' onclick="updateInputImg(this)"/>
+        </a>
+      </div>
+    </div>
+    <div class="style-container">
+      <input id="uploader" name="inputImgFile" type="file" accept="image/*">
+      <div class="link" onclick="uploadImg()">Upload an image</div>
+      <div class="link" onclick="useWebcam()">Use my webcam</div>
+    </div>
+    <div class="style-container">
+      <button class="start-btn" onclick="onPredictClick()">Transfer My Image / Video</button>
+    </div>
+    <div class="style-container">
+      <div class="note">
+        Click this button to start transfering your own image or video.<br>
+        If you are using webcam, you might need to wait for 3s / frame.
+      </div>
+    </div>
+  </div>
+
+  <div id="learning-container" class="white-box col-3">
+    <h3 class="title">STYLE</h3>
+    <div class="center-container">
+      <img id="style-img" src='../../assets/wave.jpg'>
+    </div>
+    <div class="style-container">
+      <div class="container">
+        <a class="imageAnchor" href="#" autofocus>
+          <img class="image" id="wave" src='../../assets/wave.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="la_muse" src='../../assets/la_muse.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="rain_princess" src='../../assets/rain_princess.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+    </div>
+    <div class="style-container">
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="udnie" src='../../assets/udnie.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="wreck" src='../../assets/wreck.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="scream" src='../../assets/scream.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+    </div>
+    <div class="style-container">
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="fuchun" src='../../assets/fuchun.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="zhangdaqian" src='../../assets/zhangdaqian.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+      <div class="container">
+        <a class="imageAnchor" href="#">
+          <img class="image" id="mathura" src='../../assets/girlwithpearl.jpg' onclick="updateStyleImg(this)"/>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="white-box output-container col-3">
+    <h3 class="title">OUTPUT</h3>
+    <div id="output-img-container">
+      <img src="../../assets/vooc2.jpg" alt="image">
+    </div>
+  </div>
+
+  </div>
+
+  
+</body>
+
+</html>
+    
